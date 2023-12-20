@@ -56,10 +56,10 @@
         </dependency>
         <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
         <!--  dépendance pour ElasticSearch-->
-        <dependency>
+        <!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-		</dependency>
+		</dependency> -->
         <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
         <!-- dépendance pour base de donnée de test h2-->
         <dependency>
@@ -101,31 +101,28 @@
         <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 <!--dependance pour axon framework et axon serveur-->
 
-        <dependency>
-            <groupId>org.axonframework</groupId>
-            <artifactId>axon-spring-boot-starter</artifactId>
-            <version>4.5.2</version>
-        </dependency>
-        <!--dependance de axon framework pour les tests-->
-        <dependency>
-            <groupId>org.axonframework</groupId>
-            <artifactId>axon-test</artifactId>
-            <version>4.5.2</version>
-            <scope>test</scope>
-        </dependency>
+<!-- https://mvnrepository.com/artifact/org.axonframework/axon-spring-boot-starter -->
+<dependency>
+    <groupId>org.axonframework</groupId>
+    <artifactId>axon-spring-boot-starter</artifactId>
+    <version>4.9.0</version>
+</dependency>
+  <!--dependance de axon framework pour les tests-->
+        <!-- https://mvnrepository.com/artifact/org.axonframework/axon-test -->
+<dependency>
+    <groupId>org.axonframework</groupId>
+    <artifactId>axon-test</artifactId>
+    <version>4.9.0</version>
+    <scope>test</scope>
+</dependency>
+
         <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
         <!--dependance pour eureka pour enregistrer les microservices dans l'annuaire Eureka Server-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-       <!-- dependance pour prometheus-->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-            <version>1.6.3</version>
-        </dependency>
+        
         <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
         <!--dependance pour les tests -->
         <dependency>
