@@ -1,0 +1,100 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 7s
+      routes:
+        - id: contact-commande-service
+          uri: "http://localhost:9892/"
+          predicates:
+            - Path=/api/commands/* , /v3/api-docs/contact-commande
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: contactCommandeBreaker
+                fallbackUri: forward:/fb/contact-commande/
+        - id: contact-query-service
+          uri: "http://localhost:9893/"
+          predicates:
+             - Path=/api/query/* , /v3/api-docs/contact-query
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: contactQueryBreaker
+                fallbackUri: forward:/fb/contact-query/
+        - id: projet-commande-service
+          uri: "http://localhost:8890/"
+          predicates:
+             - Path=/api/commands/* , /v3/api-docs/projet-commande
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: projetCommandeBreaker
+                fallbackUri: forward:/fb/projet-commande/
+        - id: projet-query-service
+          uri: "http://localhost:8091/"
+          predicates:
+             - Path=/api/query/* , /v3/api-docs/projet-query
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: projetQueryBreaker
+                fallbackUri: forward:/fb/projet-query/
+        - id: don-commande-service
+          uri: "http://localhost:8082/"
+          predicates:
+            - Path=/api/commands/* , /v3/api-docs/don-commande
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: donCommandeBreaker
+                fallbackUri: forward:/fb/don-commande/
+        - id: don-query-service
+          uri: "http://localhost:8083/"
+          predicates:
+            - Path=/api/query/* , /v3/api-docs/don-query
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: donQueryBreaker
+                fallbackUri: forward:/fb/don-query/
+        - id: utilisateur-commande-service
+          uri: "http://localhost:8892/"
+          predicates:
+            - Path=/api/commands/* , /v3/api-docs/utilisateur-commande
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: utilisateurCommandeBreaker
+                fallbackUri: forward:/fb/utilisateur-commande/
+        - id: utilisateur-query-service
+          uri: "http://localhost:8093/"
+          predicates:
+            - Path=/api/query/* , /v3/api-docs/utilisateur-query
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: utilisateurQueryBreaker
+                fallbackUri: forward:/fb/utilisateur-query/
+    discovery:
+      enabled: true
+
+resilience4j:
+  time limiter:
+    configs:
+      default:
+        timeoutDuration: 7000
+        cancelRunningFuture: true
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud.gateway: DEBUG
+        http.server.reactive: DEBUG
+        web.reactive: DEBUG

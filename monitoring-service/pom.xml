@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.operantic</groupId>
+		<artifactId>oterredesperance-cqrs-es</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.operantic</groupId>
+	<artifactId>monitoring-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>monitoring-service</name>
+	<description>Project ONG </description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    <version>2.2.5.RELEASE</version>
+</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			 <plugin>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <version>2.10</version>
+  <configuration>
+    <useFile>false</useFile>
+  </configuration>
+</plugin>
+		</plugins>
+	</build>
+
+</project>
